@@ -7,12 +7,14 @@ class Home extends React.Component {
         super()
         this.state = {
             addressesCount: 0,
+            sats: 0,
         }
 
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(event) {
+        event.persist()
         let apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()&q=balance("
             .concat(event.target.value, "..)")
         if (event.target.value > 0) {
@@ -20,7 +22,8 @@ class Home extends React.Component {
                 .then(response => response.json())
                 .then(data => {
                     this.setState({
-                        addressesCount: data.data[0]['count()']
+                        addressesCount: data.data[0]['count()'],
+                        sats: event.target.value
                     })
                 })
         }
@@ -34,7 +37,7 @@ class Home extends React.Component {
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title">
-                            {this.state.addressesCount} addresses have more than this many Satoshis
+                            {this.state.addressesCount} addresses have more than {this.state.sats} Satoshis
                         </h1>
                         <ul>
                             <Addresses />

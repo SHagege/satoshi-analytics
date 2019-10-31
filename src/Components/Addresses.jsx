@@ -25,6 +25,7 @@ class List extends React.Component {
             <li key={e.address} value={e.address}>{e.address} {e.balance} Sats</li>)
         return (
             <div>
+                <h1 className="title">Rich List</h1>
                 {richListDisplay}
             </div>
         )

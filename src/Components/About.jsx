@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from './NavBar'
+
 class About extends React.Component {
     render() {
         return (
@@ -10,8 +11,8 @@ class About extends React.Component {
                         <b>About</b>
                     </h1>
                     <h2>
-                        <b>Satoshi Analytics is an analytics website focused on Bitcoin<br /><br />
-                            Created by @solalhagege (Twitter)</b>
+                        <b>Satoshi Analytics is a statistics website focused on Bitcoin<br /><br />
+                            Created by</b> <a href="https://twitter.com/solalhagege">@solalhagege</a>
                     </h2>
                 </div>
             </div>
