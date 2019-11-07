@@ -1,6 +1,6 @@
 # Satoshi Analytics
 
-![](https://github.com/SHagege/satoshi-analytics/blob/master/view.gif)
+<img src="https://github.com/SHagege/satoshi-analytics/blob/master/view.gif"/>
 
 Satoshi Analytics is a website that displays useful information about Bitcoin addresses. 
 
