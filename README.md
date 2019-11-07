@@ -1,8 +1,6 @@
 # Satoshi Analytics
 
-<p align="center">
-    <img src="artworks/view.gif" width="550" alt="SA gif"/>
-</p>
+![](view.gif)
 
 Satoshi Analytics is a website that displays useful information about Bitcoin addresses. 
 
