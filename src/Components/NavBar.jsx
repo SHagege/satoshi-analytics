@@ -1,11 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-class NavBar extends React.Component {
-    constructor() {
-        super()
-    }
-
+export default class NavBar extends React.Component {
     render() {
         return (
             <div id="navbarMenuHeroC" className="NavBarItems">
@@ -21,5 +17,3 @@ class NavBar extends React.Component {
         )
     }
 }
-
-export default NavBar;

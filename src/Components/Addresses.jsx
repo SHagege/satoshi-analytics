@@ -1,6 +1,6 @@
 import React from "react"
 
-class List extends React.Component {
+export default class Addresses extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -24,7 +24,7 @@ class List extends React.Component {
         const richListDisplay = this.state.richList.map((e) =>
             <div className="row-rich-list">
                 <div>
-                    {e.address}
+                    <a href={"https://blockchair.com/bitcoin/address/" + e.address}>{e.address}</a>
                 </div>
                 <div>
                     {e.balance.toLocaleString()} Sats
@@ -38,5 +38,3 @@ class List extends React.Component {
         )
     }
 }
-
-export default List;
