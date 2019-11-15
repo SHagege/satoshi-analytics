@@ -22,12 +22,19 @@ class List extends React.Component {
 
     render() {
         const richListDisplay = this.state.richList.map((e) =>
-            <li key={e.address} value={e.address}>{e.address} {e.balance.toLocaleString()} Sats</li>)
+            <div className="row-rich-list">
+                <div>
+                    {e.address}
+                </div>
+                <div>
+                    {e.balance.toLocaleString()} Sats
+                </div>
+            </div>)
         return (
-            <div>
+            <div className="richlist-container">
                 <h1 className="title">Rich List</h1>
-                {richListDisplay}
-            </div>
+                <div className="richlist-address-container">{richListDisplay}</div>
+            </div >
         )
     }
 }
