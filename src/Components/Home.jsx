@@ -35,7 +35,6 @@ export default class Home extends React.Component {
         fetch(apiRequest)
             .then(response => response.json())
             .then(data => {
-                console.log(data.data[0]['count()'])
                 this.setState({
                     nonZeroAd: data.data[0]['count()']
                 })
@@ -52,9 +51,11 @@ export default class Home extends React.Component {
                 <input className="input is-rounded searchSats" type="text" placeholder="Enter Satoshi amount" onChange={this.handleChange} />
                 <div className="hero-body">
                     <div className="container has-text-centered">
-                        <h1 className="title">
-                            {this.state.addressesCount.toLocaleString()} addresses have more than {this.state.sats} Satoshis
-                        </h1>
+                        {this.state.sats ?
+                            <h1 className="title">
+                                {this.state.addressesCount.toLocaleString()} addresses have more than {parseInt(this.state.sats).toLocaleString()} Satoshis
+                            </h1> : null
+                        }
                         <Addresses />
                     </div>
                 </div>
