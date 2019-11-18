@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/satoshi-analytics/precache-manifest.73ef3dd2322ff684588949ff0bf6fec8.js"
+  "/satoshi-analytics/precache-manifest.66f5ec0ef784b6fbd269d3164c5ebda7.js"
 );
 
 self.addEventListener('message', (event) => {
