@@ -9,6 +9,8 @@ export default class Home extends React.Component {
             nonZeroAd: 0,
             addressesCount: 0,
             sats: 0,
+            sumSats: 0,
+            circulation: 0,
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -18,6 +20,9 @@ export default class Home extends React.Component {
         event.persist()
         let apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()&q=balance("
             .concat(event.target.value, "..)")
+        let apiRequestSum = "https://api.blockchair.com/bitcoin/addresses?a=sum(balance)&q=balance("
+            .concat(event.target.value, "..)")
+        let bitcoinStats = "https://api.blockchair.com/bitcoin/stats"
         if (event.target.value > 0) {
             fetch(apiRequest)
                 .then(response => response.json())
@@ -27,6 +32,23 @@ export default class Home extends React.Component {
                         sats: event.target.value
                     })
                 })
+            fetch(apiRequestSum)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.data)
+                    this.setState({
+                        sumSats: data.data[0]['sum(balance)']
+                    })
+                })
+            fetch(bitcoinStats)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.data)
+                    this.setState({
+                        circulation: data.data['circulation']
+                    })
+                })
+
         }
     }
 
@@ -53,7 +75,8 @@ export default class Home extends React.Component {
                     <div className="container has-text-centered">
                         {this.state.sats ?
                             <h1 className="title">
-                                {this.state.addressesCount.toLocaleString()} addresses have more than {parseInt(this.state.sats).toLocaleString()} Satoshis
+                                {this.state.addressesCount.toLocaleString()} addresses have more than {parseInt(this.state.sats).toLocaleString()} Satoshis<br />
+                                All those addresses represent {((this.state.sumSats / this.state.circulation) * 100).toFixed(2)}% of all the Bitcoins in circulation.
                             </h1> : null
                         }
                         <Addresses />
