@@ -22,7 +22,6 @@ export default class Home extends React.Component {
             .concat(event.target.value, "..)")
         let apiRequestSum = "https://api.blockchair.com/bitcoin/addresses?a=sum(balance)&q=balance("
             .concat(event.target.value, "..)")
-        let bitcoinStats = "https://api.blockchair.com/bitcoin/stats"
         if (event.target.value > 0) {
             fetch(apiRequest)
                 .then(response => response.json())
@@ -40,25 +39,25 @@ export default class Home extends React.Component {
                         sumSats: data.data[0]['sum(balance)']
                     })
                 })
-            fetch(bitcoinStats)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.data)
-                    this.setState({
-                        circulation: data.data['circulation']
-                    })
-                })
-
         }
     }
 
     componentDidMount() {
         let apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()"
+        let bitcoinStats = "https://api.blockchair.com/bitcoin/stats"
         fetch(apiRequest)
             .then(response => response.json())
             .then(data => {
                 this.setState({
                     nonZeroAd: data.data[0]['count()']
+                })
+            })
+        fetch(bitcoinStats)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.data)
+                this.setState({
+                    circulation: data.data['circulation']
                 })
             })
     }
