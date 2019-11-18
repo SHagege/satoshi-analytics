@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/satoshi-analytics/static/css/main.34de6062.chunk.css",
-    "main.js": "/satoshi-analytics/static/js/main.82d5af48.chunk.js",
-    "main.js.map": "/satoshi-analytics/static/js/main.82d5af48.chunk.js.map",
+    "main.js": "/satoshi-analytics/static/js/main.b456a5fe.chunk.js",
+    "main.js.map": "/satoshi-analytics/static/js/main.b456a5fe.chunk.js.map",
     "runtime-main.js": "/satoshi-analytics/static/js/runtime-main.5268a342.js",
     "runtime-main.js.map": "/satoshi-analytics/static/js/runtime-main.5268a342.js.map",
     "static/js/2.4b9fb1a3.chunk.js": "/satoshi-analytics/static/js/2.4b9fb1a3.chunk.js",
     "static/js/2.4b9fb1a3.chunk.js.map": "/satoshi-analytics/static/js/2.4b9fb1a3.chunk.js.map",
     "index.html": "/satoshi-analytics/index.html",
-    "precache-manifest.c60b574a275a5c25e0bc0962d389f736.js": "/satoshi-analytics/precache-manifest.c60b574a275a5c25e0bc0962d389f736.js",
+    "precache-manifest.3dbf78a3c0abdd36709bbf2d78bf2841.js": "/satoshi-analytics/precache-manifest.3dbf78a3c0abdd36709bbf2d78bf2841.js",
     "service-worker.js": "/satoshi-analytics/service-worker.js",
     "static/css/main.34de6062.chunk.css.map": "/satoshi-analytics/static/css/main.34de6062.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.5268a342.js",
     "static/js/2.4b9fb1a3.chunk.js",
     "static/css/main.34de6062.chunk.css",
-    "static/js/main.82d5af48.chunk.js"
+    "static/js/main.b456a5fe.chunk.js"
   ]
 }
