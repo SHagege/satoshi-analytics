@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd70f43b300591d9f00e2c2b71c98347",
+    "revision": "4af81903254841a8c7fb85c5bf8872d1",
     "url": "/satoshi-analytics/index.html"
   },
   {
-    "revision": "addd8364e9f60caa0ef8",
+    "revision": "9018262f50600bd6b80d",
     "url": "/satoshi-analytics/static/css/main.34de6062.chunk.css"
   },
   {
-    "revision": "6b52732fd4bb6bc8d938",
-    "url": "/satoshi-analytics/static/js/2.3eccd8ee.chunk.js"
+    "revision": "44662e62b24c0e1a78c0",
+    "url": "/satoshi-analytics/static/js/2.4b9fb1a3.chunk.js"
   },
   {
-    "revision": "addd8364e9f60caa0ef8",
-    "url": "/satoshi-analytics/static/js/main.1f886c51.chunk.js"
+    "revision": "9018262f50600bd6b80d",
+    "url": "/satoshi-analytics/static/js/main.50cad8e2.chunk.js"
   },
   {
     "revision": "7f0ff9893765e277c31f",
