@@ -1,6 +1,7 @@
 import React from 'react';
 import Addresses from "./Addresses.jsx";
 import NavBar from './NavBar.jsx';
+import Footer from './Footer.jsx'
 
 export default class Home extends React.Component {
     constructor() {
@@ -81,6 +82,7 @@ export default class Home extends React.Component {
                         <Addresses />
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }
