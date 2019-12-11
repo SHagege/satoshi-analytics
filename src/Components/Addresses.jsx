@@ -9,7 +9,8 @@ export default class Addresses extends React.Component {
     }
 
     componentDidMount() {
-        let apiRequest = "https://api.blockchair.com/bitcoin/addresses"
+        let apiRequest = "https://api.blockchair.com/bitcoin/addresses?key="
+            .concat(process.env.REACT_APP_API_KEY)
         fetch(apiRequest)
             .then(response => response.json())
             .then(data => {

@@ -20,9 +20,9 @@ export default class Home extends React.Component {
     handleChange(event) {
         event.persist()
         let apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()&q=balance("
-            .concat(event.target.value, "..)")
+            .concat(event.target.value, "..)&key=", process.env.REACT_APP_API_KEY)
         let apiRequestSum = "https://api.blockchair.com/bitcoin/addresses?a=sum(balance)&q=balance("
-            .concat(event.target.value, "..)")
+            .concat(event.target.value, "..)&key=", process.env.REACT_APP_API_KEY)
         if (event.target.value > 0) {
             fetch(apiRequest)
                 .then(response => response.json())
@@ -44,8 +44,10 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        let apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()"
-        let bitcoinStats = "https://api.blockchair.com/bitcoin/stats"
+        let apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()&key="
+            .concat(process.env.REACT_APP_API_KEY)
+        let bitcoinStats = "https://api.blockchair.com/bitcoin/stats?key="
+            .concat(process.env.REACT_APP_API_KEY)
         fetch(apiRequest)
             .then(response => response.json())
             .then(data => {
