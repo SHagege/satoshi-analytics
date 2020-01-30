@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+@import "../../node_modules/bulma/sass/form/_all.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+
+
+.input {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.input-name {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.button {
+  max-width: 1000px;
+  width: 10%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.NavBarItems {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .aboutPage {
+    color: #363636;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+    text-align: center;
+  }
+
+  .title-container {
+    margin-top: 200px;
+  }
+
+  .title-top {
+    margin-top: -200px;
+  }
+
+  .searchSats {
+    margin-top: 30px;
+  }
+
+  .richlist-address-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .richlist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .row-rich-list {
+    display: flex;
+    justify-content: space-between;
+  }
