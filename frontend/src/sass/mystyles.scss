@@ -71,6 +71,19 @@
     align-items: center;
   }
 
+  .portfolio-address-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+  }
+
+  .portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .row-rich-list {
     display: flex;
     justify-content: space-between;

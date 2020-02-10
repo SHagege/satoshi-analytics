@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 
 const CoinSchema = new Schema({
     name: { type: String, required: true },
-    quantity: { type: Number }
+    amount: { type: Number, required: true }
 })
 
 const CoinModel = mongoose.model('Coin', CoinSchema)

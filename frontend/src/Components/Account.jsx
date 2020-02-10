@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import NavBar from './NavBar'
 import axios from 'axios'
 
@@ -8,19 +7,27 @@ export default class Account extends React.Component {
         super()
         this.state = {
             portfolio: [],
-            value: ""
+            coin: "",
+            amount: 0
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChangeCoin = this.handleChangeCoin.bind(this)
+        this.handleChangeAmount = this.handleChangeAmount.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.deleteCoin = this.deleteCoin.bind(this)
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    handleChangeCoin(event) {
+        this.setState({ coin: event.target.value });
+    }
+
+    handleChangeAmount(event) {
+        this.setState({ amount: event.target.value })
     }
 
     async handleSubmit(event) {
         const coin = {
-            coinName: this.state.value
+            coinName: this.state.coin,
+            amount: this.state.amount
         }
         const response = await axios.post(
             'http://localhost:5000/add',
@@ -42,26 +49,37 @@ export default class Account extends React.Component {
             });
     }
 
+    deleteCoin(coin) {
+        const request = "http://localhost:5000/delete/".concat(coin)
+        axios.delete("http://localhost:5000/delete/")
+    }
+
     render() {
+        const portfolio = this.state.portfolio.map((item, index) =>
+            <div>
+                <div className="row-rich-list">
+                    <div>
+                        <p>{item.name}</p>
+                    </div>
+                    <div>
+                        {item.amount}
+                    </div>
+                </div>
+            </div>)
         return (
             <div>
                 <NavBar />
                 <div className="has-text-centered title-top">
                     <h1 className="title is-1">Add coin to portfolio</h1>
                 </div>
-                <input className="input" type="text" onChange={this.handleChange} placeholder="Coin" />
+                <input className="input" type="text" onChange={this.handleChangeCoin} placeholder="Coin" />
+                <input className="input" type="text" onChange={this.handleChangeAmount} placeholder="Amount" />
                 <div class="control">
                     <button className="button is-light" onClick={this.handleSubmit}>Add</button>
                 </div>
-                <div className="richlist-container">
+                <div className="portfolio-container">
                     <h1 className="title">Portfolio</h1>
-                    {this.state.portfolio.map((item, index) => {
-                        return (
-                            <div>
-                                <div className="richlist-address-container">{item.name}</div>
-                            </div>
-                        )
-                    })}
+                    <div className="portfolio-address-container">{portfolio}</div>
                 </div>
             </div>
         )
