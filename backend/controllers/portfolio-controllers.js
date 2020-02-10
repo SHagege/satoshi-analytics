@@ -7,18 +7,44 @@ const addCoin = (req, res, next) => {
     mongoose.connection.db.listCollections({ name: 'portfolios' })
         .next(function (err, portfolio) {
             if (!portfolio) {
-                console.log("Salut")
                 const portfolio = new Portfolio()
                 portfolio.save()
             }
             portfolio = new Portfolio()
             const coinName = new Coin({
-                name: req.body.coinName
+                name: req.body.coinName,
+                amount: req.body.amount
             })
             coinName.save()
             portfolio.coins.push(coinName)
             res.status(201).json(addCoin)
         });
+}
+
+const delCoin = async (req, res, next) => {
+    const coinID = req.params.cid
+
+    let coin
+    try {
+        coin = await Coin.findById(coinID)
+    } catch (err) {
+        const error = new HttpError(
+            "Couldn't delete place",
+            500
+        );
+        return next(error)
+    }
+
+    try {
+        await coin.remove()
+    } catch (err) {
+        const error = new HttpError(
+            "Couldn't delete place",
+            500
+        )
+        return next(error)
+    }
+    res.status(200).json({ message: "Deleted Place" })
 }
 
 const getPortfolio = async (req, res, next) => {
@@ -37,4 +63,5 @@ const getPortfolio = async (req, res, next) => {
 }
 
 exports.addCoin = addCoin
+exports.delCoin = delCoin
 exports.getPortfolio = getPortfolio

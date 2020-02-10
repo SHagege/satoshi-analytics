@@ -8,4 +8,6 @@ router.get('/portfolio', portfolioController.getPortfolio)
 
 router.post('/add', portfolioController.addCoin)
 
+router.delete('/delete/:cid', portfolioController.delCoin)
+
 module.exports = router
