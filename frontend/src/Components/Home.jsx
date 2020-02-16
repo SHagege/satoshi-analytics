@@ -2,6 +2,7 @@ import React from 'react';
 import Addresses from "./Addresses.jsx";
 import NavBar from './NavBar.jsx';
 import Footer from './Footer.jsx'
+import axios from 'axios';
 
 export default class Home extends React.Component {
     constructor() {
@@ -12,6 +13,7 @@ export default class Home extends React.Component {
             sats: 0,
             sumSats: 0,
             circulation: 0,
+            halveningBlockLeft: 0
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -20,11 +22,11 @@ export default class Home extends React.Component {
     handleChange(event) {
         event.persist()
         const apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()&q=balance("
-            .concat(event.target.value, "..)&key=", process.env.REACT_APP_API_KEY)
+            .concat(event.target.value)
         const apiRequestSum = "https://api.blockchair.com/bitcoin/addresses?a=sum(balance)&q=balance("
-            .concat(event.target.value, "..)&key=", process.env.REACT_APP_API_KEY)
+            .concat(event.target.value)
         if (event.target.value > 0) {
-            fetch(apiRequest)
+            axios.get(apiRequest)
                 .then(response => response.json())
                 .then(data => {
                     this.setState({
@@ -32,7 +34,7 @@ export default class Home extends React.Component {
                         sats: event.target.value
                     })
                 })
-            fetch(apiRequestSum)
+            axios.get(apiRequestSum)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.data)
@@ -44,10 +46,9 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        const apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()&key="
-            .concat(process.env.REACT_APP_API_KEY)
-        const bitcoinStats = "https://api.blockchair.com/bitcoin/stats?key="
-            .concat(process.env.REACT_APP_API_KEY)
+        const apiRequest = "https://api.blockchair.com/bitcoin/addresses?a=count()"
+        const bitcoinStats = "https://api.blockchair.com/bitcoin/stats"
+        const halveningStats = "https://api.blockchair.com/tools/halvening"
         fetch(apiRequest)
             .then(response => response.json())
             .then(data => {
@@ -63,6 +64,15 @@ export default class Home extends React.Component {
                     circulation: data.data['circulation']
                 })
             })
+        fetch(halveningStats)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.data)
+                console.log(data.data['bitcoin']['blocks_left'])
+                this.setState({
+                    halveningBlockLeft: data.data['bitcoin']['blocks_left']
+                })
+            })
     }
 
     render() {
@@ -70,7 +80,8 @@ export default class Home extends React.Component {
             <div>
                 <NavBar />
                 <div className="has-text-centered title-container">
-                    <h1 className="title is-1">{this.state.nonZeroAd.toLocaleString()} addresses have a non-zero balance</h1>
+                    <h1 className="title-halving">{this.state.halveningBlockLeft} blocks are left before the Halving. At block 630,000 the block reward will drop to 6.25 BTC</h1>
+                    <h1 className="title is-2">{this.state.nonZeroAd.toLocaleString()} addresses have a non-zero balance</h1>
                 </div>
                 <input className="input is-rounded searchSats" type="text" placeholder="Enter Satoshi amount" onChange={this.handleChange} />
                 <div className="hero-body">

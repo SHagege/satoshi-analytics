@@ -11,28 +11,28 @@
 @import "../../node_modules/bulma/sass/layout/section.sass";
 
 
-.input {
+  .input {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     display: flex;
-}
+  }
 
-.input-name {
+  .input-name {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
   display: flex;
-}
+  }
 
-.button {
+  .button {
   max-width: 1000px;
   width: 10%;
   margin: 0 auto;
   display: flex;
-}
+  }
 
-.NavBarItems {
+  .NavBarItems {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -87,4 +87,12 @@
   .row-rich-list {
     display: flex;
     justify-content: space-between;
+  }
+
+  .title-halving {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.125;
+    margin-left: 200px;
+    margin-right: 200px;
   }
