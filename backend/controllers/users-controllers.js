@@ -15,7 +15,6 @@ const register = async (req, res, next) => {
     } catch {
         res.status(501).json({ message: "Can't create user" })
     }
-    console.log(newUser)
 }
 
 exports.register = register
