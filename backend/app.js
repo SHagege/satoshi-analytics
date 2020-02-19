@@ -10,12 +10,13 @@ const dotenv = require('dotenv');
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('./models/user')
+const bcrypt = require('bcrypt')
 
 
 passport.use(new LocalStrategy((username, password, done) => {
     User.findOne({
         username: username
-    }, function (err, user) {
+    }, async function (err, user) {
         if (err) {
             return done(err);
         }
@@ -23,8 +24,7 @@ passport.use(new LocalStrategy((username, password, done) => {
         if (!user) {
             return done(null, false);
         }
-
-        if (user.password != password) {
+        if (!await bcrypt.compare(password, user.password)) {
             return done(null, false);
         }
         return done(null, user);
